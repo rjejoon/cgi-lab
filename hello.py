@@ -1,33 +1,23 @@
 #!/usr/bin/env python3
 
 import os
-
-import cgi
-import cgitb
+import json
 
 
 def main():
 
     form = cgi.FieldStorage()
 
-    print("Content-Type: text/html")    
+    # print("Content-Type: application/json")
+    print("Content-type: text/html")
     print()                             # blank line, end of headers
 
-    print("<html>")
-
-    print("<head>")
-    print("<title>CGI Program</title>")
-    print("</head>")
-
-    print("<body>")
-    print("Hello, world!")
-
-    print("</body>")
-    print("</html>")
+    # print(json.dumps(dict(os.environ), indent=2))
+    # print(f"<p>QUERY_STRING: {os.environ['QUERY_STRING']}</p>")
+    print(f"<p>HTTP_USER_AGENT: {os.environ['HTTP_USER_AGENT']}</p>")
 
 
 
 
 if __name__ == '__main__':
-    cgitb.enable()      # display errors occured in web browsers
     main()
